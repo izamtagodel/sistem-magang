@@ -13,7 +13,7 @@
   @endif
   <div id="auth-left">
     <div class="auth-logo">
-      <a href="index.html"><img src="assets/images/logo/logo.svg" alt="Logo"></a>
+      <a href="index.html"><img src="/template/assets/images/logo/favicon.svg" alt="Logo"></a>
     </div>
     <h1 class="auth-title">Log in.</h1>
     <p class="mb-5 auth-subtitle">Log in with your data that you entered during registration.</p>

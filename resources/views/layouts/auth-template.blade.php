@@ -4,13 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login - Mazer Admin Dashboard</title>
+  <title>Magang Sidang</title>
   <link rel="stylesheet" href="/template/assets/css/main/app.css">
   <link rel="stylesheet" href="/template/assets/css/pages/auth.css">
   <link rel="shortcut icon" href="/template/assets/images/logo/favicon.svg" type="image/x-icon">
   <link rel="shortcut icon" href="/template/assets/images/logo/favicon.png" type="image/png">
 
-  @vite(['resources/css/app.css', 'resources/js/app.js'])
+  {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
 </head>
 
 <body>

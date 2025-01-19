@@ -193,7 +193,7 @@
 
 
                     <div class="mb-3">
-                      <a href="" class="btn btn-primary">Edit Data Diri</a>
+                      <a href="/data-magang/{{ $dataMhs->id }}" class="btn btn-primary">Edit Data Diri</a>
                     </div>
 
                   </div>

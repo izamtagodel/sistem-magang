@@ -15,7 +15,7 @@
 
   @stack('css')
 
-  @vite(['resources/css/app.css', 'resources/js/app.js'])
+  {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
 
 </head>
 
@@ -25,9 +25,10 @@
       <div class="sidebar-wrapper active">
         <div class="sidebar-header position-relative">
           <div class="d-flex justify-content-between align-items-center">
-            <div class="logo">
-              <a href="index.html"><img src="assets/images/logo/logo.svg" alt="Logo" srcset=""></a>
-            </div>
+            <a href="index.html" class="navbar-brand mx-auto mx-lg-0">
+              <img src="/template/assets/images/logo/favicon.svg" alt="Logo">
+              <span class="brand-text">Magang <br> sidang</span>
+          </a>
             <div class="gap-2 mt-2 theme-toggle d-flex align-items-center">
               <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
                 role="img" class="iconify iconify--system-uicons" width="20" height="20"
