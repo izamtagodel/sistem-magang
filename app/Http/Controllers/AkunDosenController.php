@@ -14,7 +14,7 @@ class AkunDosenController extends Controller
     public function index()
     {
         return view('data-akun-dosen', [
-            'datas' => User::where('role', 'dosen')->get()
+            'datas' => User::where('role', 'dosen')->orWhere('role', 'dosen_penguji')->get(),
         ]);
     }
 
@@ -41,8 +41,24 @@ class AkunDosenController extends Controller
         $data['role'] = User::ROLE_DOSEN;
         $data['photo'] = User::PHOTO_DEFAULT;
 
-
         User::create($data);
+        return redirect()->route('data-akun-dosen.index');
+    }
+
+    public function jadikan_dosen_penguji(string $id)
+    {
+        $dataAkunDosen = User::find($id);
+if($dataAkunDosen->role!==User::ROLE_DOSEN_PENGUJI){
+    $dataAkunDosen->update([
+        'role' => User::ROLE_DOSEN_PENGUJI,
+    ]);
+}
+if($dataAkunDosen->role!==User::ROLE_DOSEN){
+    $dataAkunDosen->update([
+        'role' => User::ROLE_DOSEN,
+    ]);
+}
+       
         return redirect()->route('data-akun-dosen.index');
     }
 

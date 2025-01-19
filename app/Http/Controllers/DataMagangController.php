@@ -23,19 +23,17 @@ class DataMagangController extends Controller
                 'dataMhs' => $dataMhs,
                 'dataDosen' => $dataDosen,
                 'dataJadwal' => $dataJadwal,
-                'dataNilai' => $dataNilai
+                'dataNilai' => $dataNilai,
             ]);
         }
 
         if (Auth::user()->role == 'dosen' || Auth::user()->role == 'dosen_penguji' || Auth::user()->role == 'admin') {
-
             $dataMhs = Mahasiswa::all();
             return view('data-magang', [
-                'dataMhs' => $dataMhs
+                'dataMhs' => $dataMhs,
             ]);
         }
     }
-
 
     public function store(Request $request)
     {
@@ -47,27 +45,23 @@ class DataMagangController extends Controller
             'agama' => 'required',
             'gender' => 'required',
             'alamat' => 'required',
-            'dospem' => 'required'
+            'dospem' => 'required',
         ]);
 
         $data['user_id'] = Auth::user()->id;
 
-
         DB::transaction(function () use ($data) {
             $mhs = Mahasiswa::create($data);
             Jadwal::create([
-                'mahasiswa_id' => $mhs->id
+                'mahasiswa_id' => $mhs->id,
             ]);
             Nilai::create([
                 'mahasiswa_id' => $mhs->id,
             ]);
         });
 
-
         return redirect()->route('data-magang')->with('success', 'Anda berhasil daftar magang');
     }
-
-
 
     public function show(string $id)
     {
@@ -77,10 +71,9 @@ class DataMagangController extends Controller
         return view('detail-data-mahasiswa', [
             'dataMhs' => $dataMhs,
             'dataJadwal' => $dataJadwal,
-            'dataNilai' => $dataNilai
+            'dataNilai' => $dataNilai,
         ]);
     }
-
 
     public function update_tempat_magang(string $id, Request $request)
     {
@@ -93,5 +86,33 @@ class DataMagangController extends Controller
         ]);
 
         return redirect()->back();
+    }
+
+    public function edit(string $id, Request $request)
+    {
+        $dataMhs = Mahasiswa::find($id);
+        $dataDosen = User::where('role', 'dosen')->get();
+
+        return view('edit-data-diri', [
+            'dataMhs' => $dataMhs,
+            'dataDosen' => $dataDosen,
+        ]);
+    }
+
+    public function update(string $id, Request $request)
+    {
+        $mhs = Mahasiswa::find($id);
+
+        $mhs->update([
+            'nim' => $request->nim,
+            'prodi' => $request->prodi,
+            'tgl_lahir' => $request->tgl_lahir,
+            'tempat_lahir' => $request->tempat_lahir,
+            'agama' => $request->agama,
+            'gender' => $request->gender,
+            'alamat' => $request->alamat,
+            'dospem' => $request->dospem,
+        ]);
+        return redirect('data-magang');
     }
 }
