@@ -8,6 +8,7 @@ use App\Models\Nilai;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class DataMagangController extends Controller
 {
@@ -51,13 +52,17 @@ class DataMagangController extends Controller
 
         $data['user_id'] = Auth::user()->id;
 
-        $mhs = Mahasiswa::create($data);
-        Jadwal::create([
-            'mahasiswa_id' => $mhs->id
-        ]);
-        Nilai::create([
-            'mahasiswa_id' => $mhs->id,
-        ]);
+
+        DB::transaction(function () use ($data) {
+            $mhs = Mahasiswa::create($data);
+            Jadwal::create([
+                'mahasiswa_id' => $mhs->id
+            ]);
+            Nilai::create([
+                'mahasiswa_id' => $mhs->id,
+            ]);
+        });
+
 
         return redirect()->route('data-magang')->with('success', 'Anda berhasil daftar magang');
     }

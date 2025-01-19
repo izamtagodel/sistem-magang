@@ -266,11 +266,11 @@
                         <div class="row">
                           <div class="col-sm-6">
                             <input type="text" class="form-control" name="dospem"
-                              value="{{ $dataNilai->dospem_nama }}" readonly>
+                              value="{{ $dataNilai->dospem_nama ?? '' }}" readonly>
                           </div>
                           <div class="col-sm-6">
                             <input type="number" class="form-control" name="dospem" id="tmp_magang"
-                              value="{{ $dataNilai->dospem_nilai }}" readonly>
+                              value="{{ $dataNilai->dospem_nilai ?? '' }}" readonly>
                           </div>
                         </div>
 
@@ -284,11 +284,11 @@
                         <div class="row">
                           <div class="col-sm-6">
                             <input type="text" class="form-control" name="dospem" id="tmp_magang"
-                              value="{{ $dataNilai->dospeng_1_nama }}" readonly>
+                              value="{{ $dataNilai->dospeng_1_nama ?? '' }}" readonly>
                           </div>
                           <div class="col-sm-6">
                             <input type="number" class="form-control" name="dospem" id="tmp_magang"
-                              value="{{ $dataNilai->dospeng_1_nilai }}" readonly>
+                              value="{{ $dataNilai->dospeng_1_nilai ?? '' }}" readonly>
                           </div>
                         </div>
                         @error('dospeng_1')
@@ -301,11 +301,11 @@
                         <div class="row">
                           <div class="col-sm-6">
                             <input type="text" class="form-control" name="dospem" id="tmp_magang"
-                              value="{{ $dataNilai->dospeng_2_nama }}" readonly>
+                              value="{{ $dataNilai->dospeng_2_nama ?? '' }}" readonly>
                           </div>
                           <div class="col-sm-6">
                             <input type="number" class="form-control" name="dospem" id="tmp_magang"
-                              value="{{ $dataNilai->dospeng_2_nilai }}" readonly>
+                              value="{{ $dataNilai->dospeng_2_nilai ?? '' }}" readonly>
                           </div>
                         </div>
                         @error('dospeng_2')
@@ -319,11 +319,11 @@
                         <div class="row">
                           <div class="col-sm-6">
                             <input type="text" class="form-control" name="dospem" id="tmp_magang"
-                              value="{{ $dataNilai->dospeng_3_nama }}" readonly>
+                              value="{{ $dataNilai->dospeng_3_nama ?? '' }}" readonly>
                           </div>
                           <div class="col-sm-6">
                             <input type="number" class="form-control" name="dospem" id="tmp_magang"
-                              value="{{ $dataNilai->dospeng_3_nilai }}" readonly>
+                              value="{{ $dataNilai->dospeng_3_nilai ?? '' }}" readonly>
                           </div>
                         </div>
                         @error('dospeng_3')
@@ -344,7 +344,7 @@
                       <div class="form-group">
                         <label for="tempat">Tempat</label>
                         <input type="text" class="form-control" name="tempat" id="tempat"
-                          value="{{ $dataJadwal->tempat }}" readonly>
+                          value="{{ $dataJadwal->tempat ?? '' }}" readonly>
                         @error('tempat')
                           <small class="text-danger">{{ $message }}</small>
                         @enderror
@@ -353,7 +353,7 @@
                       <div class="form-group">
                         <label for="tmp_magang">Tanggal</label>
                         <input type="text" class="form-control" name="tanggal" id="tanggal"
-                          value="{{ $dataJadwal->tanggal }}" readonly>
+                          value="{{ $dataJadwal->tanggal ?? '' }}" readonly>
                         @error('tanggal')
                           <small class="text-danger">{{ $message }}</small>
                         @enderror
@@ -363,7 +363,7 @@
                       <div class="form-group">
                         <label for="jam">Jam</label>
                         <input type="time" class="form-control" name="jam" id="jam"
-                          value="{{ $dataJadwal->jam }}" readonly>
+                          value="{{ $dataJadwal->jam ?? '' }}" readonly>
                         @error('jam')
                           <small class="text-danger">{{ $message }}</small>
                         @enderror
