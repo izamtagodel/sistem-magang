@@ -23,7 +23,7 @@
               $no = 1;
             @endphp
             @foreach ($dataMhs as $mhs)
-              @if (Auth::user()->role == 'dosen_penguji' || $mhs->dospem == Auth::user()->name)
+              @if (Auth::user()->role == 'dosen_penguji' || Auth::user()->role == 'admin' || $mhs->dospem == Auth::user()->name)
                 <tr>
                   <td class="align-middle">{{ $no++ }}</td>
                   <td class="align-middle">{{ $mhs->user->name }}</td>

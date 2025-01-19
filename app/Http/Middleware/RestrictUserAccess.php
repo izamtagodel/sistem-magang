@@ -20,7 +20,7 @@ class RestrictUserAccess
             $user = Auth::user();
 
             if (strtolower($user->role) === 'user' || strtolower($user->role) === 'dosen' || strtolower($user->role) === 'dosen_penguji') {
-                if ($request->is('data-akun-dosen') || $request->is('data-akun-dosen/create')) {
+                if ($request->is('data-akun-dosen') || $request->is('data-akun-dosen/create') || $request->is('data-akun-dosen/update-role/*')) {
                     return redirect()->route('dashboard');
                 }
             }

@@ -25,17 +25,5 @@
       </li>
     @endif
 
-
-    <li class="sidebar-item {{ Request::is('akun-dosen') ? 'active' : '' }}">
-      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-          @csrf
-      </form>
-      <button class="sidebar-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-          <i class="bi bi-grid-fill"></i>
-          <span>Logout</span>
-      </button>
-  </li>
-  
-
   </ul>
 </div>

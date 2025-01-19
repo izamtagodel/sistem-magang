@@ -19,7 +19,7 @@ class User extends Authenticatable
     const ROLE_DOSEN_PENGUJI = 'dosen_penguji';
 
 
-    const PHOTO_DEFAULT = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png';
+    const PHOTO_DEFAULT = 'avatar.webp';
     /**
      * The attributes that are mass assignable.
      *

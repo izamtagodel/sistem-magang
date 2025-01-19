@@ -4,19 +4,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> @yield('title') - Magang</title>
+  <title>Vertical Navbar - Mazer Admin Dashboard</title>
 
   <link rel="stylesheet" href="/template/assets/css/main/app.css">
-  <link rel="stylesheet" href="/template/assets/css/main/app-dark.css">
+
   <link rel="shortcut icon" href="/template/assets/images/logo/favicon.svg" type="image/x-icon">
   <link rel="shortcut icon" href="/template/assets/images/logo/favicon.png" type="image/png">
 
+  <link rel="stylesheet" href="/template/assets/css/main/app-dark.css">
   <link rel="stylesheet" href="/template/assets/css/shared/iconly.css">
 
   @stack('css')
-
-  {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
-
 </head>
 
 <body>
@@ -25,10 +23,10 @@
       <div class="sidebar-wrapper active">
         <div class="sidebar-header position-relative">
           <div class="d-flex justify-content-between align-items-center">
-            <a href="index.html" class="navbar-brand mx-auto mx-lg-0">
-              <img src="/template/assets/images/logo/favicon.svg" alt="Logo">
-              <span class="brand-text">Magang <br> sidang</span>
-          </a>
+            <div class="logo">
+              <a href="/dashboard"><img src="/template/assets/images/logo/favicon.svg" alt="Logo"
+                  srcset=""></a>
+            </div>
             <div class="gap-2 mt-2 theme-toggle d-flex align-items-center">
               <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
                 role="img" class="iconify iconify--system-uicons" width="20" height="20"
@@ -62,46 +60,27 @@
             </div>
           </div>
         </div>
-
-        {{-- Sidebar start --}}
         @include('layouts.sidebar')
-        {{-- Sidebar end --}}
-
 
 
       </div>
     </div>
-    <div id="main">
-      <header class="mb-3">
-        <a href="#" class="burger-btn d-block d-xl-none">
-          <i class="bi bi-justify fs-3"></i>
-        </a>
-      </header>
+    <div id="main" class='layout-navbar'>
 
-      {{-- Content start --}}
-      @yield('content')
-      {{-- Content end --}}
+      @include('layouts.navbar')
 
-      {{-- <footer>
-        <div class="clearfix mb-0 footer text-muted">
-          <div class="float-start">
-            <p>2021 &copy; Mazer</p>
-          </div>
-          <div class="float-end">
-            <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
-                href="https://saugi.me">Saugi</a></p>
-          </div>
+
+
+      <div id="main-content">
+        <div class="page-heading">
+          @yield('content')
         </div>
-      </footer> --}}
+
+      </div>
     </div>
   </div>
   <script src="/template/assets/js/bootstrap.js"></script>
   <script src="/template/assets/js/app.js"></script>
-
-  <!-- Need: Apexcharts -->
-  <script src="/template/assets/extensions/apexcharts/apexcharts.min.js"></script>
-  <script src="/template/assets/js/pages/dashboard.js"></script>
-
   @stack('js')
 
 </body>

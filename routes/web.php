@@ -8,6 +8,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DataMagangController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ProfileController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -23,19 +24,22 @@ Route::middleware('auth')->group(function () {
     Route::post('/data-magang', [DataMagangController::class, 'store'])->name('data-magang.post');
     Route::get('/data-magang/{id}/{name}', [DataMagangController::class, 'show'])->name('data-magang.detail-mahasiswa');
 
-    Route::get('/data-magang/{id}',[DataMagangController::class, 'edit'] )->name('data-magang.edit-data-diri');
-    Route::patch('/data-magang/{id}',[DataMagangController::class, 'update'] )->name('data-magang.update-data-diri');
+    Route::get('/data-magang/{id}', [DataMagangController::class, 'edit'])->name('data-magang.edit-data-diri');
+    Route::patch('/data-magang/{id}', [DataMagangController::class, 'update'])->name('data-magang.update-data-diri');
 
-   
-    
 
     Route::patch('/data-tempat-magang/{id}/update', [DataMagangController::class, 'update_tempat_magang'])->name('update-tempat-magang');
     Route::patch('/data-penjadwalan/{id}/update', [SidangController::class, 'update_penjadwalan'])->name('update-penjadwalan');
     Route::put('/data-nilai/{id}/update', [NilaiController::class, 'update_nilai'])->name('update_nilai');
 
 
+    Route::get('/profile', [ProfileController::class, 'index']);
+    Route::get('/profile/edit', [ProfileController::class, 'edit']);
+    Route::patch('/profile/update', [ProfileController::class, 'update']);
+
+
     Route::resource('data-akun-dosen', AkunDosenController::class)->middleware('adminOnly');
-    Route::patch('/data-akun-dosen/{id}/update-role',[AkunDosenController::class, 'jadikan_dosen_penguji']);
+    Route::patch('/data-akun-dosen/update-role/{id}', [AkunDosenController::class, 'jadikan_dosen_penguji'])->middleware('adminOnly');
 
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 });

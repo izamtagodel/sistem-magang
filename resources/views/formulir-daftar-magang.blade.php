@@ -17,7 +17,9 @@
 
                 <div class="form-group">
                   <div class="col-md-4 d-flex justify-content-center">
-                    <img src="{{ Auth::user()->photo }}" alt="" width="100%">
+                    <img
+                      src="{{ Auth::user()->photo !== 'avatar.webp' ? asset('storage/' . Auth::user()->photo) : asset('avatar.webp') }}"
+                      alt="" width="100%">
                   </div>
                 </div>
                 <div class="form-group">
@@ -134,8 +136,10 @@
                 @endif
 
                 <div class="row">
-                  <div class="col-md-5 d-flex justify-content-center">
-                    <img src="{{ Auth::user()->photo }}" alt="" class="w-100">
+                  <div class="col-md-5 d-flex justify-content-center h-100">
+                    <img
+                      src="{{ Auth::user()->photo ? asset('storage/' . Auth::user()->photo) : asset('avatar.webp') }}"
+                      alt="" class="w-100">
                   </div>
 
                   <div class="col-md-7">

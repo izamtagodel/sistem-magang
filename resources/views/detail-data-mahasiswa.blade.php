@@ -11,8 +11,10 @@
         <div class="card">
           <div class="card-body">
             <div class="row">
-              <div class="col-md-5 d-flex justify-content-center">
-                <img src="{{ Auth::user()->photo }}" alt="" class="w-100">
+              <div class="col-md-5 d-flex justify-content-center h-100">
+                <img
+                  src="{{ $dataMhs->user->photo !== 'avatar.webp' ? asset('storage/' . $dataMhs->user->photo) : asset('avatar.webp') }}"
+                  alt="" class="w-100">
               </div>
 
               <div class="col-md-7">

@@ -48,17 +48,17 @@ class AkunDosenController extends Controller
     public function jadikan_dosen_penguji(string $id)
     {
         $dataAkunDosen = User::find($id);
-if($dataAkunDosen->role!==User::ROLE_DOSEN_PENGUJI){
-    $dataAkunDosen->update([
-        'role' => User::ROLE_DOSEN_PENGUJI,
-    ]);
-}
-if($dataAkunDosen->role!==User::ROLE_DOSEN){
-    $dataAkunDosen->update([
-        'role' => User::ROLE_DOSEN,
-    ]);
-}
-       
+
+        if ($dataAkunDosen->role === User::ROLE_DOSEN_PENGUJI) {
+            $dataAkunDosen->update([
+                'role' => User::ROLE_DOSEN,
+            ]);
+        } else {
+            $dataAkunDosen->update([
+                'role' => User::ROLE_DOSEN_PENGUJI,
+            ]);
+        }
+
         return redirect()->route('data-akun-dosen.index');
     }
 
