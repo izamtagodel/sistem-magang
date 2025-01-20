@@ -34,7 +34,7 @@
               <div class="form-group">
                 <label for="name">Nama Lengkap</label>
                 <input type="text" class="form-control" name="name" value="{{ $data->name }}"
-                  {{ Auth::user()->role === 'dosen' ? 'disabled' : '' }}>
+                  {{ Auth::user()->role === 'dosen' ? 'readonly' : '' }}>
                 @error('name')
                   <small class="text-danger">{{ $message }}</small>
                 @enderror

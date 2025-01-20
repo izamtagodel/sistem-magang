@@ -38,7 +38,7 @@ class DataMagangController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'nim' => 'required|digits:10',
+            'nim' => 'required|digits:10|unique:mahasiswas',
             'prodi' => 'required',
             'tgl_lahir' => 'required',
             'tempat_lahir' => 'required',
